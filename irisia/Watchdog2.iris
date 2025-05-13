@@ -1,0 +1,69 @@
+MODULE:HUD:0:true
+MODULE:Flight:33:true
+MODULE:Kill Aura:19:false
+MODULE:ClickGUI:54:false
+MODULE:Scaffold:34:false
+MODULE:Velocity:0:false
+MODULE:Chest Stealer:0:false
+MODULE:Sprint:0:false
+MODULE:Chams:0:false
+MODULE:ESP:0:false
+MODULE:Speed:45:false
+MODULE:Animations:19:false
+MODULE:View Model:0:false
+MODULE:China Hat:0:true
+MODULE:Anti Bot:0:false
+PROPERTY:Kill Aura-Rotation Mode:Vanilla
+PROPERTY:Kill Aura-Rotate Speed:180.0
+PROPERTY:Kill Aura-Target Filtering:Priority
+PROPERTY:Kill Aura-Attack Method:Packet
+PROPERTY:Kill Aura-Auto Block:false
+PROPERTY:Kill Aura-Auto Block Mode:Fake
+PROPERTY:Kill Aura-Snap Head:true
+PROPERTY:Kill Aura-Min Range:4.0
+PROPERTY:Kill Aura-Max Range:4.2
+PROPERTY:Kill Aura-Min APS:8.0
+PROPERTY:Kill Aura-Max APS:12.0
+PROPERTY:Kill Aura-Keep Sprint:true
+PROPERTY:Kill Aura-No Swing:false
+PROPERTY:Scaffold-Place Mode:Swing
+PROPERTY:Scaffold-Rotations:Static
+PROPERTY:Scaffold-Rotation Bypass:NCP
+PROPERTY:Scaffold-Silent:true
+PROPERTY:Scaffold-Tower:Watchdog
+PROPERTY:Scaffold-Place Delay (MS):2.0
+PROPERTY:Scaffold-Max Angle Step:15.0
+PROPERTY:Scaffold-Expand:false
+PROPERTY:Scaffold-Sprint:false
+PROPERTY:Velocity-Explosion:true
+PROPERTY:Velocity-Horizontal:50.0
+PROPERTY:Velocity-Vertical:50.0
+PROPERTY:Chest Stealer-Delay:1.2
+PROPERTY:Chest Stealer-Auto Close:true
+PROPERTY:Chest Stealer-Only Valuable:false
+PROPERTY:Sprint-Omni Directional:false
+PROPERTY:Chams-Red:255.0
+PROPERTY:Chams-Green:255.0
+PROPERTY:Chams-Blue:255.0
+PROPERTY:Chams-Opacity:255.0
+PROPERTY:Chams-Material:true
+PROPERTY:Chams-Player:true
+PROPERTY:Speed-Mode:Vanilla
+PROPERTY:Speed-Speed:0.4
+PROPERTY:Animations-Mode:1.7
+PROPERTY:Animations-Smooth Hit:false
+PROPERTY:View Model-X:0.0
+PROPERTY:View Model-Y:0.0
+PROPERTY:View Model-Z:0.0
+PROPERTY:China Hat-Radius:0.5
+PROPERTY:China Hat-Y Pos:0.1
+PROPERTY:China Hat-Height:0.3
+PROPERTY:China Hat-Saturation:0.9
+PROPERTY:China Hat-Brightness:1.0
+PROPERTY:China Hat-Smoothing:true
+PROPERTY:China Hat-Alpha:120.0
+PROPERTY:China Hat-Physics:false
+PROPERTY:China Hat-Color:Rainbow
+PROPERTY:China Hat-Rainbow Start:0.5
+PROPERTY:China Hat-Rainbow End:1.0
+creationdate:1747165775141

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Irisia - Pełna Dokumentacja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ff69b4;
+        }
+        code {
+            background: #1e1e1e;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #87cefa;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Irisia - Dokumentacja</h1>
+
+<h2>1. Klasa <code>Irisia</code></h2>
+<p>Jest to główna klasa klienta Irisia, zaimplementowana jako enum Singleton.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>instanceCollection</code> – kolekcja zawierająca instancje modułów, systemów itp.</li>
+    <li><code>items</code> – zestaw nazw przedmiotów wykorzystywanych przez klienta.</li>
+    <li><code>mainFolder</code> – folder główny klienta (tworzony jako "irisia").</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>startUp()</code> – główna metoda inicjalizująca klienta:</li>
+    <ul>
+        <li>ustawia tytuł okna na "Irisia Client"</li>
+        <li>dodaje predefiniowane itemy do zbioru <code>items</code></li>
+        <li>tworzy folder główny jeśli nie istnieje</li>
+        <li>wypisuje komunikat startowy</li>
+        <li>uruchamia wszystkie instancje przez <code>instanceCollection.initializeInstances()</code></li>
+    </ul>
+</ul>
+
+<h2>2. Klasa <code>InstanceCollection</code></h2>
+<p>Klasa odpowiedzialna za inicjalizację i przechowywanie kluczowych komponentów systemu Irisia.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>moduleManager</code> – zarządza wszystkimi modułami cheat klienta.</li>
+    <li><code>altManager</code> – zarządza kontami alternatywnymi użytkownika.</li>
+    <li><code>bus</code> – system zdarzeń oparty na PubSub.</li>
+    <li><code>fontManager</code> – odpowiedzialny za generowanie i zarządzanie czcionkami w kliencie.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>initializeInstances()</code> – inicjalizuje wszystkie instancje menadżerów:</li>
+    <ul>
+        <li>tworzy nowy <code>PubSub</code> z obsługą błędów</li>
+        <li>subskrybuje sam siebie do busa</li>
+        <li>tworzy instancję <code>ModuleManager</code></li>
+        <li>tworzy i generuje tekstury dla <code>FontManager</code></li>
+        <li>tworzy instancję <code>AltManager</code> z plikiem alts w folderze <code>irisia</code></li>
+    </ul>
+</ul>
+
+<h2>3. Klasa <code>ModuleManager</code></h2>
+<p>Odpowiada za rejestrację, przechowywanie i zarządzanie wszystkimi modułami cheat klienta Irisia.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>modules</code> – lista wszystkich dostępnych modułów.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>register(Module module)</code> – dodaje nowy moduł do listy.</li>
+    <li><code>getModules()</code> – zwraca listę wszystkich zarejestrowanych modułów.</li>
+    <li><code>getModuleByName(String name)</code> – zwraca moduł o podanej nazwie.</li>
+</ul>
+
+<h2>4. Klasa <code>AltManager</code></h2>
+<p>Klasa zarządzająca kontami alternatywnymi. Pozwala użytkownikowi dodawać, usuwać i wybierać konta z poziomu klienta.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>alts</code> – lista wszystkich zapisanych kont alternatywnych.</li>
+    <li><code>altFile</code> – plik przechowujący dane kont.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>loadAlts()</code> – ładuje konta z pliku <code>altFile</code>.</li>
+    <li><code>saveAlts()</code> – zapisuje aktualną listę kont do pliku.</li>
+    <li><code>addAlt(String username, String password)</code> – dodaje nowe konto.</li>
+</ul>
+
+<h2>5. Klasa <code>ClickGUI</code></h2>
+<p>Klasa odpowiedzialna za renderowanie GUI do interakcji z użytkownikiem. Wykorzystuje OpenGL i Lwjgl do rysowania elementów na ekranie.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>mu</code> – instancja klasy <code>MenuUtil</code> odpowiedzialna za rysowanie elementów GUI.</li>
+    <li><code>translate</code> – instancja klasy <code>Translate</code> odpowiedzialna za interpolację pozycji GUI.</li>
+    <li><code>opacityAnimation</code> – animacja przezroczystości GUI.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>initGui()</code> – inicjalizuje GUI.</li>
+    <li><code>keyTyped(char typedChar, int key)</code> – reaguje na naciśnięcia klawiszy.</li>
+    <li><code>drawScreen(int mouseX, int mouseY, float partialTicks)</code> – rysuje wszystkie elementy GUI na ekranie.</li>
+    <li><code>mouseClicked(int mouseX, int mouseY, int button)</code> – obsługuje kliknięcia myszą.</li>
+    <li><code>mouseReleased(int mouseX, int mouseY, int state)</code> – obsługuje zwolnienia przycisków myszki.</li>
+    <li><code>doesGuiPauseGame()</code> – zwraca, czy GUI zatrzymuje grę (false).</li>
+</ul>
+
+<h2>6. Klasa <code>MenuUtil</code></h2>
+<p>Klasa pomocnicza, która zawiera metody do rysowania różnych elementów GUI (np. prostokątów, tekstów, przycisków). Używana przez <code>ClickGUI</code>.</p>
+<h3>Metody:</h3>
+<ul>
+    <li><code>drawRect(int x, int y, int width, int height, Color color)</code> – rysuje prostokąt o zadanych wymiarach i kolorze.</li>
+    <li><code>drawMod(Module module, int x, int y, int width, int height)</code> – rysuje moduł na ekranie (np. przycisk w GUI).</li>
+    <li><code>drawBooleanSetting(BooleanProperty p, int x, int y, int width, int height)</code> – rysuje ustawienie typu boolean.</li>
+    <li><code>drawEnum(EnumProperty p, int x, int y, int width, int height)</code> – rysuje ustawienie typu enum.</li>
+    <li><code>drawNumberSetting(DoubleProperty p, int x, int y, int width, int height)</code> – rysuje ustawienie typu double.</li>
+    <li><code>drawKeybind(Module module, int x, int y, int width, int height)</code> – rysuje ustawienie typu keybind dla modułu.</li>
+    <li><code>isHovering(int x, int y, int width, int height)</code> – sprawdza, czy kursor myszy znajduje się nad danym obszarem.</li>
+</ul>
+
+<h2>7. Klasa <code>Speed</code></h2>
+<p>Moduł odpowiedzialny za zwiększenie prędkości poruszania się gracza w grze Minecraft. Obsługuje dwa tryby: "Vanilla" oraz "Ground Strafe".</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>mode</code> – wybór trybu prędkości ("Vanilla", "Ground Strafe").</li>
+    <li><code>speed</code> – wartość prędkości, która zmienia się w zależności od wybranego trybu.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>onEnable()</code> – aktywuje moduł.</li>
+    <li><code>onDisable()</code> – dezaktywuje moduł.</li>
+    <li><code>onUpdate(EventUpdate event)</code> – reaguje na aktualizację i dostosowuje prędkość gracza na podstawie wybranego trybu.</li>
+</ul>
+
+<h2>8. Klasa <code>Module</code></h2>
+<p>Klasa bazowa dla wszystkich modułów. Zawiera mechanizmy umożliwiające przechowywanie ustawień modułów, ich włączanie/wyłączanie oraz rejestrowanie właściwości.</p>
+<h3>Pola:</h3>
+<ul>
+    <li><code>showSettings</code> – flaga określająca, czy ustawienia modułu są widoczne.</li>
+    <li><code>binding</code> – flaga informująca, czy moduł jest powiązany z jakimś klawiszem.</li>
+    <li><code>category</code> – kategoria modułu (np. <code>COMBAT</code>, <code>MOVEMENT</code>).</li>
+    <li><code>x</code>, <code>y</code> – pozycja modułu na ekranie.</li>
+    <li><code>properties</code> – lista właściwości modułu (np. ustawienia).</li>
+    <li><code>keyBind</code> – kod klawisza powiązanego z modułem.</li>
+    <li><code>name</code> – nazwa modułu.</li>
+    <li><code>toggled</code> – flaga wskazująca, czy moduł jest włączony.</li>
+    <li><code>suffix</code> – dodatkowy tekst do wyświetlenia przy nazwie modułu.</li>
+</ul>
+<h3>Metody:</h3>
+<ul>
+    <li><code>toggle()</code> – zmienia stan włączenia modułu.</li>
+    <li><code>setToggled(boolean toggled)</code> – ustawia stan włączenia modułu i wykonuje odpowiednie akcje (np. subskrypcję do event busa).</li>
+    <li><code>getNotHiddenProperties()</code> – zwraca właściwości, które nie są ukryte.</li>
+    <li><code>registerProperties(Property... p)</code> – rejestruje właściwości dla modułu.</li>
+    <li><code>reflectProperties()</code> – odzwierciedla właściwości w module z wykorzystaniem refleksji.</li>
+    <li><code>onEnable()</code> – wywoływana po włączeniu modułu.</li>
+    <li><code>onDisable()</code> – wywoływana po wyłączeniu modułu.</li>
+</ul>
+
+</body>
+</html>

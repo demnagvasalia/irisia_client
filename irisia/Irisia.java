@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public enum Irisia {
+    //https://eduwarszawa-my.sharepoint.com/:w:/g/personal/k_korpak_uczen_eduwarszawa_pl/EblYYi4BGxlFhk2EijUs-E8BWcgq-MLPThPX77Wo9_VNMQ?e=FnMSss
     getInstance();
     @Getter
     public InstanceCollection instanceCollection = new InstanceCollection();
